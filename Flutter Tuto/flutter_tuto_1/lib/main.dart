@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_tuto_1/Pages/C_Plus_Plus.dart';
 import 'package:flutter_tuto_1/Pages/Flutter.dart';
+import 'package:flutter_tuto_1/Pages/Python.dart';
+import 'package:flutter_tuto_1/Pages/React.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,6 +21,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
@@ -35,6 +39,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    var _mediaQuery= MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
@@ -42,17 +47,18 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       drawer: Drawer(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox(
-              height: 50,
+              height: _mediaQuery.height*0.1,
             ),
             Card(
               elevation: 10,
               child: Container(
-                height: 50,
+                height: _mediaQuery.height*0.08,
                 child: Row(
                   children: [
-                    SizedBox(width: 10,),
+                    SizedBox(width: _mediaQuery.width*0.03,),
                     Text("About Us",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),)
                   ],
                 ),
@@ -61,11 +67,11 @@ class _MyHomePageState extends State<MyHomePage> {
             Card(
               elevation: 10,
               child: Container(
-                height: 50,
+                height: _mediaQuery.height*0.08,
                 child: Row(
                   children: [
-                    SizedBox(width: 10,),
-                    Text("About Us",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),)
+                    SizedBox(width: _mediaQuery.width*0.03,),
+                    Text("Contact Us",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),)
                   ],
                 ),
               ),
@@ -73,28 +79,34 @@ class _MyHomePageState extends State<MyHomePage> {
             Card(
               elevation: 10,
               child: Container(
-                height: 50,
+                height: _mediaQuery.height*0.08,
                 child: Row(
                   children: [
-                    SizedBox(width: 10,),
-                    Text("About Us",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),)
+                    SizedBox(width: _mediaQuery.width*0.03,),
+                    Text("Profile",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),)
                   ],
                 ),
               ),
             ),
+            ElevatedButton(
+              onPressed: (){
+                Navigator.pop(context);
+              }, 
+              child: Text("Close Drawer")
+            )
           ],
         ),
       ),
       body: Container(
-        width: double.infinity,
-        height: double.infinity,
+        width: _mediaQuery.width,
+        height: _mediaQuery.height,
         child: SingleChildScrollView(
           scrollDirection: Axis.vertical,
           child: Column(
             children: [
               Container(
-                width: double.infinity,
-                height: 120,
+                width: _mediaQuery.width,
+                height: _mediaQuery.height*0.2,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.only(bottomLeft: Radius.circular(15),bottomRight: Radius.circular(15)),
                   color: Colors.purple
@@ -103,13 +115,17 @@ class _MyHomePageState extends State<MyHomePage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SizedBox(
-                      height: 10,
+                      height: _mediaQuery.height*0.05,
                     ),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Container(
-                        width: 220,
-                        height: 50,
+                        width: _mediaQuery.width*0.6,
+                        height: _mediaQuery.height*0.07,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(11),
+                          color: Colors.white,
+                        ),
                         child: TextField(
                           decoration: InputDecoration(
                             hintText: "Search",
@@ -117,9 +133,9 @@ class _MyHomePageState extends State<MyHomePage> {
                               onPressed: (){
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   SnackBar(
-                                    content: Text("Flutter Workshop is Searched"),
+                                    content: Text("Welcome To Flutter Workshop !"),
                                     backgroundColor: Colors.green,
-                                    duration: Duration(seconds: 1),
+                                    duration: Duration(seconds: 3),
                                   )
                                 );
                               }, 
@@ -129,7 +145,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               borderRadius: BorderRadius.circular(11),
                               borderSide: BorderSide(
                                 color: Colors.grey,
-                                width: 2
+                                width: _mediaQuery.width*0.005
                               ),
                             )
                           ),
@@ -140,52 +156,51 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ),
               SizedBox(
-                width: double.infinity,
-                height: 20,
+                height: _mediaQuery.height*0.03,
               ),
               Container(
-                width: double.infinity,
-                height: 150,
+                width: _mediaQuery.width,
+                height: _mediaQuery.height*0.22,
                 child: Column(
                   children: [
                     SizedBox(
-                      height: 10,
+                      height: _mediaQuery.height*0.01,
                     ),
                     Container(
-                      width: 300,
-                      height: 60,
+                      width: _mediaQuery.width*0.82,
+                      height: _mediaQuery.height*0.09 ,
                       child: Row(
                         children: [
-                          SizedBox(width: 10,),
+                          SizedBox(width:_mediaQuery.width*0.025,),
                           CircleAvatar(
                             child: Icon(Icons.category),
                           ),
-                          SizedBox(width: 70,),
+                          SizedBox(width: _mediaQuery.width*0.2,),
                           CircleAvatar(
                             child: Icon(Icons.class_),
                           ),
-                          SizedBox(width: 70,),
+                          SizedBox(width: _mediaQuery.width*0.2,),
                           CircleAvatar(
                             child: Icon(Icons.pedal_bike),
                           ),
                         ],
                       ),
                     ),
-                    SizedBox(height: 10,),
+                    SizedBox(height: _mediaQuery.height*0.01,),
                     Container(
-                      width: 300,
-                      height: 60,
+                      width: _mediaQuery.width*0.82,
+                      height: _mediaQuery.height*0.09,
                       child: Row(
                         children: [
-                          SizedBox(width: 10,),
+                          SizedBox(width:_mediaQuery.width*0.025,),
                           CircleAvatar(
                             child: Icon(Icons.laptop),
                           ),
-                          SizedBox(width: 70,),
+                          SizedBox(width: _mediaQuery.width*0.2,),
                           CircleAvatar(
                             child: Icon(Icons.cabin),
                           ),
-                          SizedBox(width: 70,),
+                          SizedBox(width: _mediaQuery.width*0.2,),
                           CircleAvatar(
                             child: Icon(Icons.chair),
                           ),
@@ -195,25 +210,25 @@ class _MyHomePageState extends State<MyHomePage> {
                   ],
                 ),
               ),
-              SizedBox(height: 10,),
+              SizedBox(height: _mediaQuery.height*0.01,),
               Container(
-                width: double.infinity,
-                height: 50,
+                width: _mediaQuery.width,
+                height: _mediaQuery.height*0.08,
                 child: Row(
                   children: [
-                    SizedBox(width: 10,),
+                    SizedBox(width: _mediaQuery.width*0.07,),
                     Text("Courses",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 25,fontStyle: FontStyle.italic),)
                   ],
                 ),
-              ),SizedBox(height:10,),
+              ),SizedBox(height:_mediaQuery.height*0.01,),
               Container(
-                width: 320,
-                height: 400,
+                width: _mediaQuery.width*0.9,
+                height: _mediaQuery.height*0.65,
                 child: Column(
                   children: [
                     Container(
-                      width: double.infinity,
-                      height: 190,
+                      width: _mediaQuery.width,
+                      height: _mediaQuery.height*0.3,
                       child: Row(
                         children: [
                           InkWell(
@@ -221,13 +236,13 @@ class _MyHomePageState extends State<MyHomePage> {
                               color: Colors.grey,
                               elevation: 20,
                               child: Container(
-                                width: 150,
-                                height: 190,
+                                width: _mediaQuery.width*0.42,
+                                height: _mediaQuery.height*0.282,
                                 child: Column(
                                   children: [
-                                    SizedBox(height: 5,),
-                                    Image.asset("assets/images/Flutter.png",height: 120),
-                                    SizedBox(height: 10,),
+                                    SizedBox(height: _mediaQuery.height*0.003,),
+                                    Image.asset("assets/images/Flutter.png",height: _mediaQuery.height*0.18),
+                                    SizedBox(height: _mediaQuery.height*0.015,),
                                     Text("Flutter",style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),)
                                   ],
                                 ),
@@ -237,70 +252,85 @@ class _MyHomePageState extends State<MyHomePage> {
                               Navigator.push(context, MaterialPageRoute(builder: (context)=>Flutter()));
                             },
                           ),
-                          Card(
-                            color: Colors.grey,
-                            elevation: 20,
-                            child: Container(
-                              width: 150,
-                              height: 190,
-                              child: Column(
-                                children: [
-                                  SizedBox(height: 5,),
-                                  Image.network("https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1200px-React-icon.svg.png",height: 120,),
-                                  SizedBox(height: 10,),
-                                  Text("React",style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),)
-                                ],
+                          InkWell(
+                            child: Card(
+                              color: Colors.grey,
+                              elevation: 20,
+                              child: Container(
+                                width: _mediaQuery.width*0.42,
+                                height: _mediaQuery.height*0.282,
+                                child: Column(
+                                  children: [
+                                    SizedBox(height: _mediaQuery.height*0.003,),
+                                    Image.network("https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1200px-React-icon.svg.png",height: _mediaQuery.height*0.18),
+                                    SizedBox(height: _mediaQuery.height*0.015,),
+                                    Text("React",style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),)
+                                  ],
+                                ),
                               ),
                             ),
-                          )
+                            onTap: () {
+                              Navigator.push(context, MaterialPageRoute(builder: (context)=>React()));
+                            },
+                          ),
                         ],
                       ),
                     ),
-                    SizedBox(height: 10,),
+                    SizedBox(height: _mediaQuery.height*0.01,),
                     Container(
-                      width: double.infinity,
-                      height: 190,
+                      width: _mediaQuery.width,
+                      height: _mediaQuery.height*0.3,
                       child: Row(
                         children: [
-                          Card(
-                            color: Colors.grey,
-                            elevation: 20,
-                            child: Container(
-                              width: 150,
-                              height: 190,
-                              child: Column(
-                                children: [
-                                  SizedBox(height: 5,),
-                                  Image.network("https://logos-world.net/wp-content/uploads/2022/07/Java-Logo.jpg",height: 120,),
-                                  SizedBox(height: 10,),
-                                  Text("Java",style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),)
-                                ],
+                          InkWell(
+                            child: Card(
+                              color: Colors.grey,
+                              elevation: 20,
+                              child: Container(
+                                width: _mediaQuery.width*0.42,
+                                height: _mediaQuery.height*0.282,
+                                child: Column(
+                                  children: [
+                                    SizedBox(height: _mediaQuery.height*0.003,),
+                                    Image.network("https://freepngimg.com/thumb/c++/2-2-c++-png-clipart.png",height: _mediaQuery.height*0.18),
+                                    SizedBox(height: _mediaQuery.height*0.015,),
+                                    Text("C++",style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),)
+                                  ],
+                                ),
                               ),
                             ),
+                            onTap: () {
+                              Navigator.push(context, MaterialPageRoute(builder: (context)=>C_Plus_Plus()));
+                            },
                           ),
-                          Card(
-                            color: Colors.grey,
-                            elevation: 20,
-                            child: Container(
-                              width: 150,
-                              height: 190,
-                              child: Column(
-                                children: [
-                                  SizedBox(height: 5,),
-                                  Image.network("https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Python.svg/1200px-Python.svg.png",height: 120,),
-                                  SizedBox(height: 10,),
-                                  Text("Python",style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),)
-                                ],
+                          InkWell(
+                            child: Card(
+                              color: Colors.grey,
+                              elevation: 20,
+                              child: Container(
+                                width: _mediaQuery.width*0.42,
+                                height: _mediaQuery.height*0.282,
+                                child: Column(
+                                  children: [
+                                    SizedBox(height: _mediaQuery.height*0.003,),
+                                    Image.network("https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Python.svg/1200px-Python.svg.png",height: _mediaQuery.height*0.18),
+                                    SizedBox(height: _mediaQuery.height*0.015,),
+                                    Text("Python",style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),)
+                                  ],
+                                ),
                               ),
                             ),
-                          )
+                            onTap: () {
+                              Navigator.push(context, MaterialPageRoute(builder: (context)=>Python()));
+                            },
+                          ),
                         ],
                       ),
                     ),
                   ],
                 ),
               ),
-              SizedBox(height: 10,)
+              SizedBox(height: _mediaQuery.height*0.01,)
             ],
           ),
         ),

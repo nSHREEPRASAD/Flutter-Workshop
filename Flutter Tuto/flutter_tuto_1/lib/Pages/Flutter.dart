@@ -5,28 +5,29 @@ class Flutter extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var _mediaQuery= MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text("Flutter Information"),
       ),
       body: Container(
-        width: double.infinity,
-        height: double.infinity,
+        width: _mediaQuery.width,
+        height: _mediaQuery.height,
         child: Column(
           children: [
-            SizedBox(height: 5,),
+            SizedBox(height: _mediaQuery.height*0.02,),
             Container(
-              width: 220,
-              height: 220,
+              width: _mediaQuery.width*0.6,
+              height: _mediaQuery.height*0.35,
               child: CircleAvatar(
                 backgroundImage: AssetImage("assets/images/Flutter.png"),
               ),
             ),
-            SizedBox(height: 20,),
+            SizedBox(height: _mediaQuery.height*0.03,),
             Container(
-              width: 320,
-              height: 350,
+              width: _mediaQuery.width*0.9,
+              height: _mediaQuery.height*0.45,
               child: SingleChildScrollView(
                 child: Column(
                   children: [
