@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_tuto_1/Pages/C_Plus_Plus.dart';
 import 'package:flutter_tuto_1/Pages/Flutter.dart';
+import 'package:flutter_tuto_1/Pages/ProfileForm.dart';
 import 'package:flutter_tuto_1/Pages/Python.dart';
 import 'package:flutter_tuto_1/Pages/React.dart';
 
@@ -52,41 +53,22 @@ class _MyHomePageState extends State<MyHomePage> {
             SizedBox(
               height: _mediaQuery.height*0.1,
             ),
-            Card(
-              elevation: 10,
-              child: Container(
-                height: _mediaQuery.height*0.08,
-                child: Row(
-                  children: [
-                    SizedBox(width: _mediaQuery.width*0.03,),
-                    Text("About Us",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),)
-                  ],
+            InkWell(
+              child: Card(
+                elevation: 10,
+                child: Container(
+                  height: _mediaQuery.height*0.08,
+                  child: Row(
+                    children: [
+                      SizedBox(width: _mediaQuery.width*0.03,),
+                      Text("Profile Form",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),)
+                    ],
+                  ),
                 ),
               ),
-            ),
-            Card(
-              elevation: 10,
-              child: Container(
-                height: _mediaQuery.height*0.08,
-                child: Row(
-                  children: [
-                    SizedBox(width: _mediaQuery.width*0.03,),
-                    Text("Contact Us",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),)
-                  ],
-                ),
-              ),
-            ),
-            Card(
-              elevation: 10,
-              child: Container(
-                height: _mediaQuery.height*0.08,
-                child: Row(
-                  children: [
-                    SizedBox(width: _mediaQuery.width*0.03,),
-                    Text("Profile",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),)
-                  ],
-                ),
-              ),
+              onTap:(){
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>ProfileForm()));
+              } ,
             ),
             ElevatedButton(
               onPressed: (){
